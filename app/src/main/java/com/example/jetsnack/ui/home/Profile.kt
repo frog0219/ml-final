@@ -40,6 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -113,8 +114,10 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController) {
         /*.wrapContentSize()
         .padding(24.dp)*/
     ) {
-
-        Spacer(Modifier.height(130.dp))
+        Spacer(Modifier.height(120.dp))
+        Text(text = "Welcome to", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+        Text(text = "\"Who are you, doggy?\"", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(50.dp))
         Box(
             modifier = Modifier
                 .size(370.dp)
@@ -122,7 +125,7 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController) {
                 .background(Shadow1)
                 /*.clickable { navController.navigate("SelectDog") }*/
                 .padding(0.dp)
-                .padding(30.dp)
+                .padding(20.dp)
 
         ) {
             Image(
@@ -133,9 +136,8 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController) {
                     .clip(CircleShape)
             )
         }
-        Spacer(Modifier.height(40.dp))
-        Text(text = "Welcome to \"Who are you, doggy?\"", fontSize = 24.sp)
-        Spacer(Modifier.height(40.dp))
+        Spacer(Modifier.height(50.dp))
+
         Text(text = "You could press the button below to ", fontSize = 20.sp, color = Color.Gray)
         Text(text = "explore our app!", fontSize = 20.sp, color = Color.Gray)
     }

@@ -84,7 +84,7 @@ fun ImagePicker( navController: NavHostController) {
             Box(Modifier.size(350.dp).clickable { launcher.launch("image/*") }) {
                 if(bitmap == null){
                     Image(
-                        painterResource(Animals[0].picture),
+                        painterResource(R.drawable.bad),
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize()
                     )

@@ -292,7 +292,7 @@ fun CountryListItem(SelectAnimal: Animal, navController: NavController) {
     Row(
         modifier = Modifier
             .width(380.dp)
-            .height(60.dp)
+            .height(80.dp)
             .background(Shadow1)
             .padding(PaddingValues(8.dp, 8.dp))
             .clickable { navController.navigate("PetDetail/${id}") }
@@ -300,19 +300,19 @@ fun CountryListItem(SelectAnimal: Animal, navController: NavController) {
     ) {
         Box(
             modifier = Modifier
-                .size(50.dp)
-                .clip(CircleShape)
-                .background(Shadow3)
-                .padding(0.dp)
-                .padding(5.dp)
+                .size(60.dp)
+                /*.clip(CircleShape)*/
+                /*.background(Shadow3)*/
+                /*.padding(0.dp)*/
+                /*.padding(5.dp)*/
         ) {
             Image(
                 painterResource(SelectAnimal.picture),
                 contentDescription = null,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().clip(CircleShape)
             )
         }
         Spacer(modifier = Modifier.width(24.dp))
-        Text(text = SelectAnimal.name, fontSize = 32.sp)
+        Text(text = SelectAnimal.name, fontSize = 28.sp)
     }
 }
