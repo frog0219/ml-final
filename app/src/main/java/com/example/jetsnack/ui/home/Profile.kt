@@ -132,6 +132,7 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController) {
             )
         }
         Spacer(Modifier.height(30.dp))
+        Text(text = "Welcome", fontSize = 30.sp)
         Spacer(Modifier.height(40.dp))
     }
     //彈出視窗介面1
