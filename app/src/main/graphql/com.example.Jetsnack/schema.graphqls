@@ -1,0 +1,186 @@
+# Types
+type Author implements Timestamps { 
+  userId: ID!
+  userKey: Int!
+  userName: String!
+  userEquipDog:Int!
+  userIntroduction:String!
+  userMoney:Int!
+  continue_focus_time: Int!
+  total_focus_time: Int!
+  friend_number: Int!
+  continue_login_day: Int!
+  last_focus_time: Int!
+  day_focus_time:Int!
+  notification: Boolean!
+  meetingFriend: Boolean!
+  disturdMode: Boolean!
+  # Interface required
+  createdAt: Date!
+  updatedAt: Date!
+}
+type friendApplication{
+  userId: ID!
+  friendIdApplication: ID!
+}
+type userDog {
+	userId: ID!
+  dogId: Int!
+  dogobtain: Int!
+}
+type userEgg{
+  userId: ID!
+  eggSequence: Int!
+  eggRemain_time: Int!
+  eggId: Int!
+}
+type userAchievement{
+  userId: ID!
+  achievementId: Int!
+  achievementobtain: Int!
+}
+type userFriend{
+  userId:ID!
+  friendID:ID!
+  friendName:String!
+}
+
+type userMultipleFocus{
+  userId: ID!
+  roomCode: String!
+  roomPeopleNumber: Int!
+  userId2: String
+  userId3: String
+  userId4: String
+  restTime: Int!
+  startTime: Int!
+  startFocus: Boolean!
+}
+type userEvent{
+	userId:ID!
+  eventYear: Int!
+  eventMonth: Int!
+  eventDay: Int!
+  eventHour: Int!
+  eventHeader: String!
+  eventContent: String!
+}
+
+# Inputs
+input AuthorCreateInput {
+  userId:ID!
+  userKey: Int
+  userName: String
+  friendIdApplication: ID
+  friendName:String
+  friendID:ID
+  friendEquipDog: Int
+  friendIntroduction: Int
+  friendSequence: Int
+  roomCode: String
+  eggSequence: Int
+  eggRemain_time:Int
+  eggId:Int
+  eventYear: Int
+  eventMonth: Int
+  eventDay: Int
+  eventHour: Int
+  eventHeader: String
+  eventContent: String
+}
+
+input AuthorUpdateInput {
+  userName: String
+  userMoney: Int
+  userEquipDog: Int
+  userIntroduction: String
+  continue_focus_time: Int
+  total_focus_time:Int
+  friend_number: Int
+  continue_login_day: Int
+  last_focus_time: Int
+  day_focus_time:Int
+  dogId: Int
+  dogobtain: Int
+  eggSequence: Int
+  eggRemain_time:Int
+  eggId:Int
+  achievementId: Int
+  achievementobtain: Int
+  friendID: ID
+  friendName: String
+  notification: Boolean
+  roomCode: String
+  meetingFriend: Boolean
+  disturdMode: Boolean
+  roomPeopleNumber: Int
+  restTime: Int
+  startTime: Int
+  startFocus: Boolean
+}
+
+interface Timestamps {
+  createdAt: Date!
+  updatedAt: Date!
+}
+type empty{
+  userId:ID!
+}
+scalar Date
+type Query {
+  # Version
+  version: String!
+
+  # Author
+  authors: [Author]
+  author(userId: ID!): Author
+  userDog(userId: ID!):[userDog]
+  userEgg(userId: ID!):[userEgg]
+  userAchievement(userId: ID!):[userAchievement]
+  userFriend(userId: ID!):[userFriend]
+  userMultipleFocus(roomCode: String!): [userMultipleFocus]
+  userEvent(userId: ID!): [userEvent]
+  friendApplication(userId: ID!): [friendApplication]
+}
+
+type Mutation {
+  # Authors
+  createAuthor(userId:ID!,userKey:Int!,userName:String!): empty
+  createAuthorFriend(userId:ID!,friendID:ID!,friendName:String!): empty
+  createAuthorMultipleFocus(userId:ID!,roomCode:String!): empty
+  createAuthorEvent(userId:ID!,eventYear:Int!,eventMonth:Int!,eventDay:Int!,eventHour:Int!,eventHeader:String!,eventContent:String!): empty
+  createAuthorFriendApplication(userId:ID!,friendIdApplication:ID!): empty
+  createAuthorEgg(userId:ID!,eggId:Int!,eggRemain_time:Int!,eggSequence:Int!): empty
+  updateAuthorName(userId: ID!,userName:String!):empty
+  updateAuthorMoney(userId: ID!,userMoney:Int!): empty
+  updateAuthorEquipDog(userId: ID!, userEquipDog:Int!): empty
+  updateAuthorIntroduction(userId: ID!, userIntroduction:String!): empty
+  updatecontinue_focus_time(userId: ID!, continue_focus_time:Int!): empty
+  updatetotal_focus_time(userId: ID!, total_focus_time:Int!): empty
+  updatefriend_number(userId: ID!, friend_number:Int!): empty
+  updatecontinue_login_day(userId: ID!, continue_login_day:Int!): empty
+  updatelast_focus_time(userId: ID!, last_focus_time:Int!): empty
+  updateday_focus_time(userId: ID!, day_focus_time:Int!): empty
+  updateAuthorDog(userId: ID!, dogId:Int!,dogobtain:Int!): empty
+ updateAuthorEggId(userId: ID!,eggId:Int!): empty
+ updateAuthorEggSequence(userId: ID!, eggSequence:Int!):empty
+ updateAuthorEggRemain_time(userId: ID!, eggRemain_time:Int!): empty
+updateAuthorAchievement(userId: ID!, achievementId:Int!,achievementobtain:Int!): empty
+updateAuthorFriendName(userId: ID!, friendID:ID!,friendName:String!): empty
+updateAuthorNotification(userId: ID!,notification:Boolean!): empty
+updateAuthorMeetingFriend(userId: ID!, meetingFriend:Boolean!): empty
+updateAuthorDisturdMode(userId: ID!, disturdMode:Boolean!): empty
+updateAuthorRoomPeopleNumber(roomCode:String!,roomPeopleNumber:Int!): empty
+updateAuthorUserId2(userId: ID!,roomCode:String!): empty
+updateAuthorUserId3(userId: ID!,roomCode:String!): empty
+updateAuthorUserId4(userId: ID!, roomCode:String!): empty
+updateAuthorRestTime(userId: ID!,restTime:Int!): empty
+updateAuthorStartTime(userId: ID!, startTime:Int!): empty
+updateAuthorStartFocus(userId: ID!, startFocus:Int!): empty
+updateAuthorEvent(userId: ID!,eventYear:Int!,eventMonth:Int!,eventDay:Int!,eventHour:Int!,eventHeader:String!,eventContent:String!): empty
+deleteAuthor(userId: ID!): empty
+deleteAuthorMultipleFocus(roomCode: String!): empty
+deleteAuthorFriendApplication(userId: ID!,friendIdApplication:ID!): empty
+deleteAuthorEvent(userId: ID!,eventYear:Int!,eventMonth:Int!,eventDay:Int!,eventHour:Int!): empty
+deleteAuthorEgg(userId:ID!): empty
+}

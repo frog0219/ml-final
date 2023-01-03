@@ -1,0 +1,275 @@
+query Author($userId: ID!) {
+  author(userId: $userId) {
+    userId
+    userKey
+    userName
+    userEquipDog
+    userIntroduction
+    userMoney
+    continue_focus_time
+    total_focus_time
+    friend_number
+    continue_login_day
+    last_focus_time
+    day_focus_time
+    notification
+    meetingFriend
+    disturdMode
+    createdAt
+    updatedAt
+  }
+}
+query UserDog($userId: ID!) {
+  userDog(userId: $userId) {
+    userId
+    dogId
+    dogobtain
+  }
+}
+query UserEgg($userId: ID!) {
+  userEgg(userId: $userId) {
+    userId
+    eggSequence
+    eggRemain_time
+    eggId
+  }
+}
+query UserAchievement($userId: ID!) {
+  userAchievement(userId: $userId) {
+    userId
+    achievementId
+    achievementobtain
+  }
+}
+query UserFriend($userId: ID!) {
+  userFriend(userId: $userId) {
+    userId
+    friendID
+    friendName
+  }
+}
+query UserMultipleFocus($roomCode: String!) {
+  userMultipleFocus(roomCode: $roomCode) {
+    userId
+    roomCode
+    roomPeopleNumber
+    userId2
+    userId3
+    userId4
+    restTime
+    startTime
+    startFocus
+  }
+}
+query UserEvent($userId: ID!) {
+  userEvent(userId: $userId) {
+    userId
+    eventYear
+    eventMonth
+    eventDay
+    eventHour
+    eventHeader
+    eventContent
+  }
+}
+query FriendApplication($userId: ID!) {
+  friendApplication(userId: $userId) {
+    userId
+    friendIdApplication
+  }
+}
+mutation CreateAuthor($userId: ID!, $userKey: Int!, $userName: String!) {
+  createAuthor(userId: $userId, userKey: $userKey, userName: $userName) {
+    userId
+  }
+}
+mutation CreateAuthorFriend($userId: ID!, $friendId: ID!, $friendName: String!) {
+  createAuthorFriend(userId: $userId, friendID: $friendId, friendName: $friendName) {
+    userId
+  }
+}
+mutation CreateAuthorMultipleFocus($userId: ID!, $roomCode: String!) {
+  createAuthorMultipleFocus(userId: $userId, roomCode: $roomCode) {
+    userId
+  }
+}
+
+mutation CreateAuthorEvent($userId: ID!, $eventYear: Int!, $eventMonth: Int!, $eventDay: Int!, $eventHour: Int!, $eventHeader: String!, $eventContent: String!) {
+  createAuthorEvent(userId: $userId, eventYear: $eventYear, eventMonth: $eventMonth, eventDay: $eventDay, eventHour: $eventHour, eventHeader: $eventHeader, eventContent: $eventContent) {
+    userId
+  }
+}
+
+mutation CreateAuthorFriendApplication($userId: ID!, $friendIdApplication: ID!) {
+  createAuthorFriendApplication(userId: $userId, friendIdApplication: $friendIdApplication) {
+    userId
+  }
+}
+
+mutation CreateAuthorEgg($userId: ID!, $eggId: Int!, $eggRemainTime: Int!, $eggSequence: Int!) {
+  createAuthorEgg(userId: $userId, eggId: $eggId, eggRemain_time: $eggRemainTime, eggSequence: $eggSequence) {
+    userId
+  }
+}
+
+mutation UpdateAuthorName($userId: ID!, $userName: String!) {
+  updateAuthorName(userId: $userId, userName: $userName) {
+    userId
+  }
+}
+mutation UpdateAuthorMoney($userId: ID!, $userMoney: Int!) {
+  updateAuthorMoney(userId: $userId, userMoney: $userMoney) {
+    userId
+  }
+}
+mutation UpdateAuthorEquipDog($userId: ID!, $userEquipDog: Int!) {
+  updateAuthorEquipDog(userId: $userId, userEquipDog: $userEquipDog) {
+    userId
+  }
+}
+mutation UpdateAuthorIntroduction($userId: ID!, $userIntroduction: String!) {
+  updateAuthorIntroduction(userId: $userId, userIntroduction: $userIntroduction) {
+    userId
+  }
+}
+mutation Updatecontinue_focus_time($userId: ID!, $continueFocusTime: Int!) {
+  updatecontinue_focus_time(userId: $userId, continue_focus_time: $continueFocusTime) {
+    userId
+  }
+}
+mutation Updatetotal_focus_time($userId: ID!, $totalFocusTime: Int!) {
+  updatetotal_focus_time(userId: $userId, total_focus_time: $totalFocusTime) {
+    userId
+  }
+}
+mutation Updatefriend_number($userId: ID!, $friendNumber: Int!) {
+  updatefriend_number(userId: $userId, friend_number: $friendNumber) {
+    userId
+  }
+}
+mutation Updatecontinue_login_day($userId: ID!, $continueLoginDay: Int!) {
+  updatecontinue_login_day(userId: $userId, continue_login_day: $continueLoginDay) {
+    userId
+  }
+}
+mutation Updatelast_focus_time($userId: ID!, $lastFocusTime: Int!) {
+  updatelast_focus_time(userId: $userId, last_focus_time: $lastFocusTime) {
+    userId
+  }
+}
+
+mutation Updateday_focus_time($userId: ID!, $dayFocusTime: Int!) {
+  updateday_focus_time(userId: $userId, day_focus_time: $dayFocusTime) {
+    userId
+  }
+}
+mutation UpdateAuthorDog($userId: ID!, $dogId: Int!, $dogobtain: Int!) {
+  updateAuthorDog(userId: $userId, dogId: $dogId, dogobtain: $dogobtain) {
+    userId
+  }
+}
+mutation UpdateAuthorEggId($userId: ID!, $eggId: Int!) {
+  updateAuthorEggId(userId: $userId, eggId: $eggId) {
+    userId
+  }
+}
+mutation UpdateAuthorEggSequence($userId: ID!, $eggSequence: Int!) {
+  updateAuthorEggSequence(userId: $userId, eggSequence: $eggSequence) {
+    userId
+  }
+}
+mutation UpdateAuthorEggRemain_time($userId: ID!, $eggRemainTime: Int!) {
+  updateAuthorEggRemain_time(userId: $userId, eggRemain_time: $eggRemainTime) {
+    userId
+  }
+}
+mutation UpdateAuthorAchievement($userId: ID!, $achievementId: Int!, $achievementobtain: Int!) {
+  updateAuthorAchievement(userId: $userId, achievementId: $achievementId, achievementobtain: $achievementobtain) {
+    userId
+  }
+}
+mutation UpdateAuthorFriendName($userId: ID!, $friendId: ID!, $friendName: String!) {
+  updateAuthorFriendName(userId: $userId, friendID: $friendId, friendName: $friendName) {
+    userId
+  }
+}
+mutation UpdateAuthorNotification($userId: ID!, $notification: Boolean!) {
+  updateAuthorNotification(userId: $userId, notification: $notification) {
+    userId
+  }
+}
+mutation UpdateAuthorMeetingFriend($userId: ID!, $meetingFriend: Boolean!) {
+  updateAuthorMeetingFriend(userId: $userId, meetingFriend: $meetingFriend) {
+    userId
+  }
+}
+mutation UpdateAuthorDisturdMode($userId: ID!, $disturdMode: Boolean!) {
+  updateAuthorDisturdMode(userId: $userId, disturdMode: $disturdMode) {
+    userId
+  }
+}
+mutation UpdateAuthorRoomPeopleNumber($roomCode: String!, $roomPeopleNumber: Int!) {
+  updateAuthorRoomPeopleNumber(roomCode: $roomCode, roomPeopleNumber: $roomPeopleNumber) {
+    userId
+  }
+}
+mutation UpdateAuthorUserId2($userId: ID!, $roomCode: String!) {
+  updateAuthorUserId2(userId: $userId, roomCode: $roomCode) {
+    userId
+  }
+}
+mutation UpdateAuthorUserId3($userId: ID!, $roomCode: String!) {
+  updateAuthorUserId3(userId: $userId, roomCode: $roomCode) {
+    userId
+  }
+}
+mutation UpdateAuthorUserId4($userId: ID!, $roomCode: String!) {
+  updateAuthorUserId4(userId: $userId, roomCode: $roomCode) {
+    userId
+  }
+}
+mutation UpdateAuthorRestTime($userId: ID!, $restTime: Int!) {
+  updateAuthorRestTime(userId: $userId, restTime: $restTime) {
+    userId
+  }
+}
+mutation UpdateAuthorStartTime($userId: ID!, $startTime: Int!) {
+  updateAuthorStartTime(userId: $userId, startTime: $startTime) {
+    userId
+  }
+}
+mutation UpdateAuthorStartFocus($userId: ID!, $startFocus: Int!) {
+  updateAuthorStartFocus(userId: $userId, startFocus: $startFocus) {
+    userId
+  }
+}
+mutation UpdateAuthorEvent($userId: ID!, $eventYear: Int!, $eventMonth: Int!, $eventDay: Int!, $eventHour: Int!, $eventHeader: String!, $eventContent: String!) {
+  updateAuthorEvent(userId: $userId, eventYear: $eventYear, eventMonth: $eventMonth, eventDay: $eventDay, eventHour: $eventHour, eventHeader: $eventHeader, eventContent: $eventContent) {
+    userId
+  }
+}
+mutation DeleteAuthor($userId: ID!) {
+  deleteAuthor(userId: $userId) {
+    userId
+  }
+}
+mutation DeleteAuthorMultipleFocus($roomCode: String!) {
+  deleteAuthorMultipleFocus(roomCode: $roomCode) {
+    userId
+  }
+}
+mutation DeleteAuthorFriendApplication($userId: ID!, $friendIdApplication: ID!) {
+  deleteAuthorFriendApplication(userId: $userId, friendIdApplication: $friendIdApplication) {
+    userId
+  }
+}
+mutation DeleteAuthorEvent($userId: ID!, $eventYear: Int!, $eventMonth: Int!, $eventDay: Int!, $eventHour: Int!) {
+  deleteAuthorEvent(userId: $userId, eventYear: $eventYear, eventMonth: $eventMonth, eventDay: $eventDay, eventHour: $eventHour) {
+    userId
+  }
+}
+mutation DeleteAuthorEgg($userId: ID!) {
+  deleteAuthorEgg(userId: $userId) {
+    userId
+  }
+}

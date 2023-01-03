@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "887262585221",
+    "project_id": "certain-math-352410",
+    "storage_bucket": "certain-math-352410.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887262585221:android:198c9ea3770d5a888624ec",
+        "android_client_info": {
+          "package_name": "com.example.jetsnack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887262585221-tidqt8nsoa714dc6hfpq60gq1r80ccbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3GE2Z7XZMmlXWbA10-gG4nHEm8VSaicw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887262585221-tidqt8nsoa714dc6hfpq60gq1r80ccbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
