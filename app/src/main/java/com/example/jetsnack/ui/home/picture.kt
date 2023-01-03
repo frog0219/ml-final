@@ -40,10 +40,7 @@ import com.example.jetsnack.R
 import com.example.jetsnack.database.Animals
 import com.example.jetsnack.database.TensorFLowHelper
 import com.example.jetsnack.database.TensorFLowHelper.imageSize
-import com.example.jetsnack.ui.theme.Shadow1
-import com.example.jetsnack.ui.theme.Shadow3
-import com.example.jetsnack.ui.theme.Shadow5
-import com.example.jetsnack.ui.theme.Shadow6
+import com.example.jetsnack.ui.theme.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -65,7 +62,9 @@ fun ImagePicker( navController: NavHostController) {
         }
     )
         Column(
-            Modifier.fillMaxSize(),
+            Modifier
+                .fillMaxSize()
+                .background(Shadow0),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(modifier = Modifier.padding(48.dp))
@@ -99,7 +98,7 @@ fun ImagePicker( navController: NavHostController) {
                 }
             }
             bitmap?.let {
-                Spacer(modifier = Modifier.padding(16.dp))
+                Spacer(modifier = Modifier.padding(24.dp))
                 val scaledBitmap = Bitmap.createScaledBitmap(it, imageSize, imageSize, false);
                 val id = TensorFLowHelper.classifyImage(scaledBitmap)
                 val name = Animals[id].name
@@ -108,7 +107,7 @@ fun ImagePicker( navController: NavHostController) {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = "Image is classified as:" , fontSize = 24.sp, color = Shadow5)
+                    Text(text = "The picture is classified as:" , fontSize = 24.sp)
                     Spacer(modifier = Modifier.padding(12.dp))
                     Row(modifier = Modifier
                         .width(200.dp)
@@ -129,14 +128,11 @@ fun ImagePicker( navController: NavHostController) {
                     }
                 }
             }
-
-
-            Spacer(modifier = Modifier.padding(32.dp))
-
+            Spacer(modifier = Modifier.padding(24.dp))
             Row( modifier = Modifier
                 .fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center) {
-                Text(text = "#Click the dog to pick an image" , fontSize = 20.sp , color = Shadow5)
+                Text(text = "Press the dog to select a picture!" , fontSize = 20.sp , color = Color.Gray)
             }
         }
 }
