@@ -1,36 +1,40 @@
 package com.example.jetsnack.ui.home
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
-import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import com.example.jetsnack.R
 import com.example.jetsnack.database.Animals
 import com.example.jetsnack.database.TensorFLowHelper
-import com.example.jetsnack.ui.theme.Shadow3
+import com.example.jetsnack.messages.LatestMessagesActivity
 import com.example.jetsnack.ui.theme.Shadow5
+
 
 @Composable
 fun CaptureImageFromCamera(navController : NavHostController) {
+    val context = LocalContext.current
     var bitmap by remember { mutableStateOf<Bitmap?>(null) }
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
@@ -85,7 +89,13 @@ fun CaptureImageFromCamera(navController : NavHostController) {
                 Spacer(modifier = Modifier.padding(16.dp))
             }
         }
-        Box(Modifier.size(60.dp).clickable {launcher.launch()}) {
+        Box(
+            Modifier
+                .size(60.dp)
+                .clickable {
+                    if((ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                                == PackageManager.PERMISSION_GRANTED)) launcher.launch()
+                }) {
             Image(
                 painter = painterResource(R.drawable.photo),
                 contentDescription = "",
@@ -94,3 +104,4 @@ fun CaptureImageFromCamera(navController : NavHostController) {
         }
     }
 }
+

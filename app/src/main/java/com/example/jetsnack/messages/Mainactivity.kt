@@ -61,17 +61,45 @@ class LatestMessagesActivity : ComponentActivity() {
         val USER_KEY = "USER_KEY"
     }
     val adapter = GroupAdapter<GroupieViewHolder>()
-    // 開啟設定頁面
-    private fun openPermissionSettings() {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        val uri = Uri.fromParts("package", packageName, null)
-        intent.data = uri
-        startActivity(intent)
+
+    val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { isGranted: Boolean ->
+        if (isGranted) {
+            Toast.makeText(this, "已取得相機權限", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "未取得相機權限", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun onClickRequestPermission() {
+        when {
+            ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED -> {
+                // 同意
+                Toast.makeText(this, "已取得相機權限", Toast.LENGTH_SHORT).show()
+            }
+
+            ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.CAMERA
+            ) -> {
+                // 被拒絕過，彈出視窗告知本App需要權限的原因
+                AlertDialog.Builder(this)
+                    .setTitle("需要相機權限")
+                    .setMessage("這個APP需要相機權限，請給予權限")
+                    .setPositiveButton("Ok") { _, _ -> requestPermissionLauncher.launch(Manifest.permission.CAMERA) }
+                    .show()
+            }
+            else -> {
+                // 第一次請求權限，直接詢問
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+        }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
+            onClickRequestPermission()
             JetsnackApp()
         }
     }
