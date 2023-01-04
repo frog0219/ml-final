@@ -75,7 +75,7 @@ val Animals = listOf(
         id = 8,
         name = "橘子",
         picture = R.drawable.animal_10 ,
-        intro1 = "特徵:橘色虎班文",
+        intro1 = "特徵:橘色虎班紋",
         intro2 = "說明:偶爾在台積館，不太親人",
         intro3 = "出沒地點:台積館"
     ),
