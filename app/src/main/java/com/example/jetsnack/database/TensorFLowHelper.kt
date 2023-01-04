@@ -27,9 +27,9 @@ object TensorFLowHelper {
         for (i in 0 until imageSize) {
             for (j in 0 until imageSize) {
                 val `val` = intValues[pixel++] // RGB
-                byteBuffer.putFloat((`val` shr 16 and 0xFF) * (1f / 1))
-                byteBuffer.putFloat((`val` shr 8 and 0xFF) * (1f / 1))
-                byteBuffer.putFloat((`val` and 0xFF) * (1f / 1))
+                byteBuffer.putFloat((`val` shr 16 and 0xFF) * (1f / 255))
+                byteBuffer.putFloat((`val` shr 8 and 0xFF) * (1f / 255))
+                byteBuffer.putFloat((`val` and 0xFF) * (1f / 255))
             }
         }
         inputFeature0.loadBuffer(byteBuffer)

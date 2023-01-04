@@ -9,6 +9,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -29,6 +30,7 @@ import com.example.jetsnack.R
 import com.example.jetsnack.database.Animals
 import com.example.jetsnack.database.TensorFLowHelper
 import com.example.jetsnack.messages.LatestMessagesActivity
+import com.example.jetsnack.ui.theme.Shadow0
 import com.example.jetsnack.ui.theme.Shadow5
 
 
@@ -42,7 +44,8 @@ fun CaptureImageFromCamera(navController : NavHostController) {
         }
     Column( modifier = Modifier
         .fillMaxWidth()
-        .fillMaxHeight(),
+        .fillMaxHeight()
+        .background(Shadow0),
             horizontalAlignment = Alignment.CenterHorizontally ,
             verticalArrangement = Arrangement.Center){
         bitmap?.let {
@@ -65,7 +68,7 @@ fun CaptureImageFromCamera(navController : NavHostController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Image is classified as:" , fontSize = 24.sp, color = Shadow5)
+                Text(text = "The picture is classified as:" , fontSize = 24.sp)
                 Spacer(modifier = Modifier.padding(12.dp))
                 Row(modifier = Modifier
                     .width(200.dp)
