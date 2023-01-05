@@ -103,14 +103,14 @@ fun ImagePicker( navController: NavHostController) {
                 val id = TensorFLowHelper.classifyImage(scaledBitmap)
                 val name = Animals[id].name
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.width(350.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(text = "The picture is classified as:" , fontSize = 24.sp)
                     Spacer(modifier = Modifier.padding(12.dp))
                     Row(modifier = Modifier
-                        .width(200.dp)
+                        .width(300.dp)
                         .height(50.dp) ,
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically){
@@ -125,7 +125,7 @@ fun ImagePicker( navController: NavHostController) {
                         }
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(text = name, fontSize = 42.sp , color = Color.Black , fontWeight = FontWeight.Bold)
-                    }
+                        }
                 }
             }
             Spacer(modifier = Modifier.padding(24.dp))

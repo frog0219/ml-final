@@ -71,7 +71,7 @@ fun CaptureImageFromCamera(navController : NavHostController) {
                 Text(text = "The picture is classified as:" , fontSize = 24.sp)
                 Spacer(modifier = Modifier.padding(12.dp))
                 Row(modifier = Modifier
-                    .width(200.dp)
+                    .width(300.dp)
                     .height(50.dp) ,
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically){

@@ -10,7 +10,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
 object TensorFLowHelper {
-    val imageSize = 224
+    const val imageSize = 224
     @Composable
     fun classifyImage(image: Bitmap): Int {
         val model: Model = Model.newInstance(LocalContext.current)
@@ -27,9 +27,9 @@ object TensorFLowHelper {
         for (i in 0 until imageSize) {
             for (j in 0 until imageSize) {
                 val `val` = intValues[pixel++] // RGB
-                byteBuffer.putFloat((`val` shr 16 and 0xFF) * (1f / 255))
-                byteBuffer.putFloat((`val` shr 8 and 0xFF) * (1f / 255))
-                byteBuffer.putFloat((`val` and 0xFF) * (1f / 255))
+                byteBuffer.putFloat((`val` shr 16 and 0xFF) / (255f))
+                byteBuffer.putFloat((`val` shr 8 and 0xFF) / (255f))
+                byteBuffer.putFloat((`val` and 0xFF) / (255f))
             }
         }
         inputFeature0.loadBuffer(byteBuffer)
@@ -39,8 +39,8 @@ object TensorFLowHelper {
         val outputFeature0: TensorBuffer = outputs.getOutputFeature0AsTensorBuffer()
         val confidences = outputFeature0.floatArray
         // find the index of the class with the biggest confidence.
-        var maxPos = 0
-        var maxConfidence = 0f
+        var maxPos = 11
+        var maxConfidence = 0.4f
         for (i in confidences.indices) {
             if (confidences[i] > maxConfidence) {
                 maxConfidence = confidences[i]
